@@ -156,7 +156,7 @@ bot.on("message", async(lol) => {
                 }
                 await reply(text)
                 break
-            case 'alquran':
+            /*case 'alquran':
                 if (args.length < 1) return await reply(`Example: ${prefix + command} 18 or ${prefix + command} 18/10 or ${prefix + command} 18/1-10`)
                 urls = `https://api.lolhuman.xyz/api/quran/${args[0]}?apikey=${apikey}`
                 quran = await fetchJson(urls)
@@ -171,7 +171,14 @@ bot.on("message", async(lol) => {
                     text += `${arab}\n${nomor}. ${latin}\n${indo}\n\n`
                 }
                 await reply(text)
-                break
+                break*/
+		case 'alquran':
+			
+				anu = await fetchJson(`https://api.banghasan.com/quran/format/json/acak`)
+				quran = `${anu.acak.ar.teks}\n\n${anu.acak.id.teks}\nQ.S ${anu.surat.nama} ayat ${anu.acak.id.ayat}`
+				//client.sendMessage(from, quran, text, {quoted: mek})
+			reply(quran)
+				break
             case 'alquranaudio':
                 if (args.length == 0) return await reply(`Example: ${prefix + command} 18 or ${prefix + command} 18/10`)
                 surah = args[0]
